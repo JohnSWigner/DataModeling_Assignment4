@@ -16,10 +16,11 @@ public class n00946743_Assign4 {
          Connection myConn = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
          Statement myStmt = myConn.createStatement();
          
-         //Creating Database and using it
+         //Create Database and use it
          myStmt.executeUpdate("CREATE DATABASE IF NOT EXISTS " + DATABASE_NAME);         
          myStmt.executeQuery("USE " + DATABASE_NAME);         
          
+         //Creating "Table" objects for each data set
          String[] playerargs = {"player_id","tag","real_name","nationality","birthday","game_race"};
          String[] playertypes = {"INTEGER","VARCHAR(255)","VARCHAR(255)","VARCHAR(255)","DATE","VARCHAR(255)"};
          String[][] playerspec = {};
@@ -207,6 +208,7 @@ public class n00946743_Assign4 {
       }
    }
    
+   //A function that prints a given result set object
    public static void printResultSet(ResultSet resultSet) throws SQLException{
       ResultSetMetaData rsmd = resultSet.getMetaData();
       int columnsNumber = rsmd.getColumnCount();
@@ -224,6 +226,7 @@ public class n00946743_Assign4 {
       }
    }
    
+   //A simple function to format strings
    public static String padRight(String s, int n) {
       return String.format("%1$-" + n + "s", s);  
    }
